@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 #define MAXBOOKS 100
+#define MAX_TITLE_LENGTH 50
 typedef struct {
     char title[50];
     char author[50];
@@ -131,6 +132,26 @@ void displayBooks(){
 }
 
 void searchBook(){
+
+    if(bookCount == 0){
+        printf("No Book Exist to search for it -)");
+        return;
+    }
+
+    char searchTitle [MAX_TITLE_LENGTH];
+    printf("PLease enter book Title to search for it:");
+    getchar();
+    fgets(searchTitle,sizeof(stock->title),stdin);
+    searchTitle[strcspn(searchTitle, "\n")] = 0;  // Remove newline
+    for(int i=0;i<bookCount;i++){
+        if(strcasecmp(stock[i].title,searchTitle)==0){
+             printf("Book [%d]:\n", i+1);
+        printf("  Title: %s\n", stock[i].title);
+        printf("  Author: %s\n", stock[i].author);
+        printf("  Quantity: %d\n", stock[i].quantity);
+        break;
+        }
+    }
 
 
 }
