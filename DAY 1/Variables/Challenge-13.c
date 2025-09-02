@@ -43,12 +43,12 @@ int main (){
 
 
     // decimal to binary
-    int mcd = 32;
-    while (mcd >=0)
+    int bitIndex = 31;
+    while (bitIndex >=0)
     {
     
-        printf("%d",numberEntier>>mcd & 1);
-        mcd--;
+        printf("%d",numberEntier>>bitIndex & 1);
+        bitIndex--;
         
     }
 
