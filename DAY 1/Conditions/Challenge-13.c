@@ -9,15 +9,25 @@ int main() {
     printf("\n\n");
 
 
-    int Ax,Ay,Bx,By;
+    float Ax,Ay,Bx,By;
+    float X,Y;
 
     printf("Entre les coordonnées de point A: ");
-    scanf("%d %d",&Ax,&Ay);
+    scanf("%f %f",&Ax,&Ay);
 
     printf("Entre les coordonnées de point B: ");
-    scanf("%d %d",&Bx,&By);
+    scanf("%f %f",&Bx,&By);
+
+     printf("Entre les coordonnées de point C dans le plan: ");
+    scanf("%f %f",&X,&Y);
+
+    // will be using det 
+    float det = (Bx - Ax)*(Y - Ay) - (By- Ay)*(X - Ax);
 
 
-    printf("%d %d %d %d %d",Ax,Ay,Bx,By);
+    printf("%f %f %f %f %f",Ax,Ay,Bx,By);
+
+
+    printf("\n\n");
     return 0;
 }
