@@ -12,7 +12,7 @@ int bookCount = 0;
 
 
 void addBook();
- void  displayBooks();
+void displayBooks();
 void searchBook();
 void searchBook();
 void updateQuantity();
@@ -89,7 +89,20 @@ void addBook(){
         printf("\nStock is Full !!!");
         return;
     }
-    
+ printf("Enter book title: ");
+    getchar();
+    fgets(stock[bookCount].title,sizeof(stock->title), stdin);
+    stock[bookCount].title[strcspn(stock[bookCount].title, "\n")] = 0; // remove newline by using strcspn
+
+    printf("Enter author name: ");
+    fgets(stock[bookCount].author, stock->author, stdin);
+    stock[bookCount].author[strcspn(stock[bookCount].author, "\n")] = 0;  // Remove newline by using strcspn
+
+    printf("Enter quantity: ");
+    scanf("%d", &stock[bookCount].quantity);
+
+    bookCount++;
+    printf("Book added successfully.\n");
 
 }
 
