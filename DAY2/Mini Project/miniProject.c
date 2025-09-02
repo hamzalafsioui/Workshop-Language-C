@@ -72,6 +72,7 @@ int main() {
         }
 
 
+    
 
 
     } while (choix != 7);
@@ -92,7 +93,7 @@ void addBook(){
         return;
     }
  printf("Enter book title: ");
-    getchar();
+    getchar(); // Program still waiting in the input buffer "\n"  we remove it by getchar -)
     fgets(stock[bookCount].title,sizeof(stock->title), stdin);
     stock[bookCount].title[strcspn(stock[bookCount].title, "\n")] = 0; // remove newline by using strcspn
 
@@ -110,6 +111,22 @@ void addBook(){
 
 void displayBooks(){
 
+    system("clear");
+    if(bookCount == 0){
+        printf("No Books Found (-\n");
+        return;
+    }
+
+    for(int i=0 ; i< bookCount ;i++){
+        printf("Book [%d]:\n", i+1);
+        printf("  Title: %s\n", stock[i].title);
+        printf("  Author: %s\n", stock[i].author);
+        printf("  Quantity: %d\n", stock[i].quantity);
+    }
+
+    
+    
+    
 
 }
 
