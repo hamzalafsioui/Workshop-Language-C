@@ -128,7 +128,7 @@ void displayBooks(){
         printf("Book [%d]:\n", i+1);
         printf("  Title: %s\n", stock[i].title);
         printf("  Author: %s\n", stock[i].author);
-        printf("  price: %s\n", stock[i].price);
+        printf("  price: %.2f\n", stock[i].price);
         printf("  Quantity: %d\n", stock[i].quantity);
     }
 
@@ -155,7 +155,7 @@ void searchBook(){
              printf("Book [%d]:\n", i+1);
         printf("  Title: %s\n", stock[i].title);
         printf("  Author: %s\n", stock[i].author);
-        printf("  price: %s\n", stock[i].price);
+        printf("  price: %.2f\n", stock[i].price);
         printf("  Quantity: %d\n", stock[i].quantity);
         break;
         }
@@ -165,7 +165,22 @@ void searchBook(){
 }
 
 void updateQuantity(){
+ char searchTitle[MAX_TITLE_LENGTH];
+    printf("Enter the title of the book to update: ");
+    getchar(); 
+    fgets(searchTitle, MAX_TITLE_LENGTH, stdin);
+    searchTitle[strcspn(searchTitle, "\n")] = 0;  // Remove newline
 
+    for (int i = 0; i < bookCount; i++) {
+        if (strcmp(stock[i].title, searchTitle) == 0) {
+            printf("Current quantity: %d\n", stock[i].quantity);
+            printf("Enter new quantity: ");
+            scanf("%d", &stock[i].quantity);
+            printf("Quantity updated.\n");
+            return;
+        }
+    }
+    printf("Book not found.\n");
 
 }
 void deleteBook(){
