@@ -85,6 +85,8 @@ int main() {
 
 void addBook(){
 
+    system("clear");
+
     if(bookCount >= MAXBOOKS){
         printf("\nStock is Full !!!");
         return;
@@ -95,7 +97,7 @@ void addBook(){
     stock[bookCount].title[strcspn(stock[bookCount].title, "\n")] = 0; // remove newline by using strcspn
 
     printf("Enter author name: ");
-    fgets(stock[bookCount].author, stock->author, stdin);
+    fgets(stock[bookCount].author,sizeof(stock->author), stdin);
     stock[bookCount].author[strcspn(stock[bookCount].author, "\n")] = 0;  // Remove newline by using strcspn
 
     printf("Enter quantity: ");
@@ -133,3 +135,9 @@ void totalBooks(){
 
 
 }
+
+
+
+// building my Own Functions 
+
+
