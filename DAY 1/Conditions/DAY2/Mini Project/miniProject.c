@@ -2,14 +2,13 @@
 
 
 
-// Le projet consiste à créer un programme en C qui permet de gérer le stock de livres dans une librairie. Le programme doit offrir les fonctionnalités suivantes :
-
-// Ajouter un livre au stock.
-// Afficher tous les livres disponibles.
-// Rechercher un livre par son titre.
-// Mettre à jour la quantité d'un livre.
-// Supprimer un livre du stock.
-// Afficher le nombre total de livres en stock.
+void addBook();
+ void  displayBooks();
+void searchBook();
+void searchBook();
+void updateQuantity();
+void deleteBook();
+void totalBooks();
 
 int main() {
     
@@ -26,30 +25,30 @@ int main() {
         printf("[6] Afficher le nombre total de livres en stock.\n");
         printf("[7] EXit.\n");
 
-        scanf(" %d ",&choix);
+        scanf("%d",&choix);
         switch (choix)
         {
         case 1:
-        printf("choix 1");
+        addBook();
             
             break;
         case 2:
-        printf("choix 2");
+        displayBooks();
         break;
          case 3:
-        printf("choix 3");
+        searchBook();
 
         break;
          case 4:
-        printf("choix 4");
+        updateQuantity();
 
         break;
          case 5:
-        printf("choix 5");
+        deleteBook();
 
         break;
          case 6:
-        printf("choix 6");
+        totalBooks();
 
         break;
          case 7:
@@ -72,4 +71,38 @@ int main() {
 
 
     return 0;
+}
+
+
+void addBook(){
+
+
+}
+
+void displayBooks(){
+
+
+}
+
+void searchBook(){
+
+
+}
+
+void updateQuantity(){
+
+
+}
+void deleteBook(){
+
+}
+
+
+
+
+
+void totalBooks(){
+
+
+
 }
