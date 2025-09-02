@@ -2,9 +2,11 @@
 
 #define MAXBOOKS 100
 #define MAX_TITLE_LENGTH 50
+#define MAX_AUTHOR_LENGTH 50
+
 typedef struct {
-    char title[50];
-    char author[50];
+    char title[MAX_TITLE_LENGTH];
+    char author[MAX_AUTHOR_LENGTH];
     int quantity;
 } Book;
 
