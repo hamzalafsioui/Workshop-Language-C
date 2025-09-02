@@ -8,6 +8,7 @@ typedef struct {
     char title[MAX_TITLE_LENGTH];
     char author[MAX_AUTHOR_LENGTH];
     int quantity;
+    float price;
 } Book;
 
 Book stock[MAXBOOKS];
@@ -104,6 +105,9 @@ void addBook(){
     fgets(stock[bookCount].author,sizeof(stock->author), stdin);
     stock[bookCount].author[strcspn(stock[bookCount].author, "\n")] = 0;  // Remove newline by using strcspn
 
+    printf("Enter price: ");
+    scanf("%f", &stock[bookCount].price);
+
     printf("Enter quantity: ");
     scanf("%d", &stock[bookCount].quantity);
 
@@ -124,6 +128,7 @@ void displayBooks(){
         printf("Book [%d]:\n", i+1);
         printf("  Title: %s\n", stock[i].title);
         printf("  Author: %s\n", stock[i].author);
+        printf("  price: %s\n", stock[i].price);
         printf("  Quantity: %d\n", stock[i].quantity);
     }
 
@@ -150,6 +155,7 @@ void searchBook(){
              printf("Book [%d]:\n", i+1);
         printf("  Title: %s\n", stock[i].title);
         printf("  Author: %s\n", stock[i].author);
+        printf("  price: %s\n", stock[i].price);
         printf("  Quantity: %d\n", stock[i].quantity);
         break;
         }
