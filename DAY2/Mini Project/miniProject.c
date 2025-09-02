@@ -148,7 +148,11 @@ void deleteBook(){
 
 
 void totalBooks(){
-
+ int total = 0;
+    for (int i = 0; i < bookCount; i++) {
+        total += stock[i].quantity;
+    }
+    printf("Total number of books in stock: %d\n", total);
 
 
 }
