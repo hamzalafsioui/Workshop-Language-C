@@ -172,7 +172,7 @@ void updateQuantity(){
     searchTitle[strcspn(searchTitle, "\n")] = 0;  // Remove newline
 
     for (int i = 0; i < bookCount; i++) {
-        if (strcmp(stock[i].title, searchTitle) == 0) {
+        if (strcasecmp(stock[i].title, searchTitle) == 0) {
             printf("Current quantity: %d\n", stock[i].quantity);
             printf("Enter new quantity: ");
             scanf("%d", &stock[i].quantity);
@@ -184,7 +184,27 @@ void updateQuantity(){
 
 }
 void deleteBook(){
+    char searchTitle[MAX_TITLE_LENGTH];
+    printf("Enter the title of the book to delete: ");
+    getchar();
+    fgets(searchTitle, MAX_TITLE_LENGTH, stdin);
+    searchTitle[strcspn(searchTitle, "\n")] = 0;  // Remove newline
 
+    for(int i=0; i<bookCount;i++){
+        if(strcasecmp(stock[i].title,searchTitle) == 0){
+            
+            for (int j = 0; j < bookCount-1; j++)
+            {
+                stock[j] = stock[j+1];
+            }
+
+            printf("Book Deleted Successfully -) ");
+            bookCount--;
+            return;
+            
+        }
+    }
+    printf("No Book Found With Title %s",searchTitle);
 }
 
 
