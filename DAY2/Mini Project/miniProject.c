@@ -1,5 +1,14 @@
 #include <stdio.h>
 
+#define MAXBOOKS 100
+typedef struct {
+    char title[50];
+    char author[50];
+    int quantity;
+} Book;
+
+Book stock[MAXBOOKS];
+int bookCount = 0;
 
 
 void addBook();
@@ -76,6 +85,11 @@ int main() {
 
 void addBook(){
 
+    if(bookCount >= MAXBOOKS){
+        printf("\nStock is Full !!!");
+        return;
+    }
+    
 
 }
 
