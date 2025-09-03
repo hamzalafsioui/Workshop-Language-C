@@ -1,5 +1,6 @@
 #include<stdio.h>
 
+// calculate prix of products avec remise by 2% after product 1 and will be incresse by 2 => 2% 4% 6% 8% ...
 int main (){
 
     float prix;

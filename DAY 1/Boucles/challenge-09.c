@@ -12,8 +12,11 @@ int count = 0;
 
     while (number != 0)
     {
-        
+        count++;
+        number /= 10;
     }
+
+    printf("le nombre de chiffres dans cet entier est: %d",count);
     
 
     return 0;
