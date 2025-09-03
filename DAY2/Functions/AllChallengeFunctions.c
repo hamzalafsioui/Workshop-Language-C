@@ -72,6 +72,7 @@ int IsPaire(int n){
 
 int main(){
 
+    // test functions
     char name[] = "hamza";
     InverseChaine(name);
     printf("%s\n",name);
