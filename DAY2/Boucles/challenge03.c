@@ -14,7 +14,7 @@ int main(){
     printf("2 ");  // 1er number entier
 
 
-    for (int i = 3; i <= n; i+=2) {
+    for (int i = 3; i <= n; i+=2) { // check only impaire Numbers because paire numbers already can divide by 2
         bool premier = true;
 
         for (int j = 3; j <= i/2; j++) {
