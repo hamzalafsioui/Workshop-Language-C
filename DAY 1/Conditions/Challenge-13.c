@@ -24,6 +24,26 @@ int main() {
     // will be using det 
     float det = (Bx - Ax)*(Y - Ay) - (By- Ay)*(X - Ax);
 
+    if(det != 0){
+        printf("Ne sont pas alignes => point se ne trouve pas sur le segment");
+        return 0;
+    }
+
+    // est ce que point C for example entre A et B
+
+
+    if(X < (Ax<(Bx ? Bx : Ax)) || (Ax>Bx ? Bx : Ax)){
+        printf("point C n'est pas entre A et B => point se ne trouve pas sur le segment");
+        return 0;
+    }
+     if(Y < (Ay<(By ? By : Ay)) || (Ay>By ? By : Ay)){
+        printf("point C n'est pas entre A et B => point se ne trouve pas sur le segment");
+        return 0;
+    }
+
+
+
+
 
     printf("%f %f %f %f %f",Ax,Ay,Bx,By);
 
