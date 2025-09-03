@@ -13,7 +13,7 @@ int main (){
     int a =0, b=1;
     int c;
 
-    printf("%d %d",a,b); // only for visualization;
+    printf("%d %d",a,b);
     for (int i = 0; i < n; i++)
     {
         c = a + b;
