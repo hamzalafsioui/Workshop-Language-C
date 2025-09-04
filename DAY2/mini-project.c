@@ -74,9 +74,9 @@ void addBook() {
     }
 
     printf("Entrez le titre du livre :");
-    getchar(); // remove trailing newline
+    getchar(); // remove trailing newline from previous input (clear buffer) => buffer is temporary storage area in memory used to hold data before program process data
     fgets(titles[bookCount], MAX_TITLE_LENGTH, stdin);
-    titles[bookCount][strcspn(titles[bookCount], "\n")] = 0; // remove newline
+    titles[bookCount][strcspn(titles[bookCount], "\n")] = 0; // remove newline for example titles[NumberOfBookRightNow,IndexOfNewline] => strcspn(originString,searchingString)
 
     printf("Entrez le nom de l'auteur :");
     fgets(authors[bookCount], MAX_AUTHOR_LENGTH, stdin);
@@ -120,7 +120,7 @@ void searchBook() {
     searchTitle[strcspn(searchTitle, "\n")] = 0; // remove newline
 
     for (int i = 0; i < bookCount; i++) {
-        if (strcasecmp(titles[i], searchTitle) == 0) {
+        if (strcasecmp(titles[i], searchTitle) == 0) { // using building library strcasecmp(ignoring case) to compare 2 strings is match or no => 0 if match => -1 if s1<s2 => 1 if s1>s2
             printf("Livre [%d]:\n", i + 1);
             printf("  Titre: %s\n", titles[i]);
             printf("  Auteur: %s\n", authors[i]);
@@ -170,9 +170,9 @@ void deleteBook() {
 
     for (int i = 0; i < bookCount; i++) {
         if (strcasecmp(titles[i], searchTitle) == 0) {
-            // Shift all subsequent books up
+            // Move all books that come after book 
             for (int j = i; j < bookCount - 1; j++) {
-                strcpy(titles[j], titles[j + 1]);
+                strcpy(titles[j], titles[j + 1]); // we use building library strcpy(dest,src) => copies a string from src place to des => we can’t  use = to copy them,We can’t use = to copy them because in this case we try to copy the pointer, not the content. => titles[j] pointer to the first character of string
                 strcpy(authors[j], authors[j + 1]);
                 prices[j] = prices[j + 1];
                 quantities[j] = quantities[j + 1];
