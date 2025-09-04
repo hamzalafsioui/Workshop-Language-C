@@ -210,3 +210,12 @@ void remove_newline_character_Custom(char *str1){
     }
     
 }
+
+// strcasecmp
+
+int strcasecmp_custom(char *str1,char *str2){
+
+    // *(str1+1) = str1[1]
+   
+    
+}
