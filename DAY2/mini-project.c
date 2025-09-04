@@ -69,101 +69,101 @@ int main() {
 
 void addBook() {
     if (bookCount >= MAXBOOKS) {
-        printf("\nStock is Full !!!\n");
+        printf("\nLe stock est plein !!!\n");
         return;
     }
 
-    printf("Enter book title: ");
+    printf("Entrez le titre du livre :");
     getchar(); // remove trailing newline
     fgets(titles[bookCount], MAX_TITLE_LENGTH, stdin);
     titles[bookCount][strcspn(titles[bookCount], "\n")] = 0; // remove newline
 
-    printf("Enter author name: ");
+    printf("Entrez le nom de l'auteur :");
     fgets(authors[bookCount], MAX_AUTHOR_LENGTH, stdin);
     authors[bookCount][strcspn(authors[bookCount], "\n")] = 0; // remove newline
 
-    printf("Enter price: ");
+    printf("Entrez le prix :");
     scanf("%f", &prices[bookCount]);
 
-    printf("Enter quantity: ");
+    printf("Entrez la quantité :");
     scanf("%d", &quantities[bookCount]);
 
     bookCount++;
-    printf("Book added successfully.\n");
+    printf("Livre ajouté avec succès.\n");
 }
 
 void displayBooks() {
     if (bookCount == 0) {
-        printf("No Books Found (-\n");
+        printf("Aucun livre trouvé (-\n");
         return;
     }
 
     for (int i = 0; i < bookCount; i++) {
-        printf("Book [%d]:\n", i + 1);
-        printf("  Title: %s\n", titles[i]);
-        printf("  Author: %s\n", authors[i]);
-        printf("  Price: %.2f\n", prices[i]);
-        printf("  Quantity: %d\n", quantities[i]);
+        printf("Livre [%d]:\n", i + 1);
+        printf("  Titre: %s\n", titles[i]);
+        printf("  Auteur: %s\n", authors[i]);
+        printf("  Prix: %.2f\n", prices[i]);
+        printf("  Quantité: %d\n", quantities[i]);
     }
 }
 
 void searchBook() {
     if (bookCount == 0) {
-        printf("No Book Exist to search for it -)\n");
+        printf("Aucun livre n'existe pour le rechercher -)\n");
         return;
     }
 
     char searchTitle[MAX_TITLE_LENGTH];
-    printf("Please enter book Title to search for it: ");
-    getchar();
-    fgets(searchTitle, MAX_TITLE_LENGTH, stdin);
-    searchTitle[strcspn(searchTitle, "\n")] = 0; // remove newline
-
-    for (int i = 0; i < bookCount; i++) {
-        if (strcasecmp_custom(titles[i], searchTitle) == 0) {
-            printf("Book [%d]:\n", i + 1);
-            printf("  Title: %s\n", titles[i]);
-            printf("  Author: %s\n", authors[i]);
-            printf("  Price: %.2f\n", prices[i]);
-            printf("  Quantity: %d\n", quantities[i]);
-            return;
-        }
-    }
-    printf("Book not found.\n");
-}
-
-void updateQuantity() {
-    if (bookCount == 0) {
-        printf("No books available to update.\n");
-        return;
-    }
-
-    char searchTitle[MAX_TITLE_LENGTH];
-    printf("Enter the title of the book to update: ");
+    printf("Veuillez entrer le titre du livre pour le rechercher :");
     getchar();
     fgets(searchTitle, MAX_TITLE_LENGTH, stdin);
     searchTitle[strcspn(searchTitle, "\n")] = 0; // remove newline
 
     for (int i = 0; i < bookCount; i++) {
         if (strcasecmp(titles[i], searchTitle) == 0) {
-            printf("Current quantity: %d\n", quantities[i]);
-            printf("Enter new quantity: ");
-            scanf("%d", &quantities[i]);
-            printf("Quantity updated.\n");
+            printf("Livre [%d]:\n", i + 1);
+            printf("  Titre: %s\n", titles[i]);
+            printf("  Auteur: %s\n", authors[i]);
+            printf("  Prix: %.2f\n", prices[i]);
+            printf("  Quantité: %d\n", quantities[i]);
             return;
         }
     }
-    printf("Book not found.\n");
+    printf("Aucun livre n'existe pour le rechercher -)\n");
 }
 
-void deleteBook() {
+void updateQuantity() {
     if (bookCount == 0) {
-        printf("No books available to delete.\n");
+        printf("Aucun livre disponible à mettre à jour.\n");
         return;
     }
 
     char searchTitle[MAX_TITLE_LENGTH];
-    printf("Enter the title of the book to delete: ");
+    printf("Entrez le titre du livre à mettre à jour :");
+    getchar();
+    fgets(searchTitle, MAX_TITLE_LENGTH, stdin);
+    searchTitle[strcspn(searchTitle, "\n")] = 0; // remove newline
+
+    for (int i = 0; i < bookCount; i++) {
+        if (strcasecmp(titles[i], searchTitle) == 0) {
+            printf("Quantité actuelle :%d\n", quantities[i]);
+            printf("Entrez la nouvelle quantité :");
+            scanf("%d", &quantities[i]);
+            printf("Quantité mise à jour.\n");
+            return;
+        }
+    }
+    printf("Livre non trouvé.\n");
+}
+
+void deleteBook() {
+    if (bookCount == 0) {
+        printf("Aucun livre disponible à supprimer.\n");
+        return;
+    }
+
+    char searchTitle[MAX_TITLE_LENGTH];
+    printf("Entrez le titre du livre à supprimer :");
     getchar();
     fgets(searchTitle, MAX_TITLE_LENGTH, stdin);
     searchTitle[strcspn(searchTitle, "\n")] = 0; // remove newline
@@ -178,11 +178,12 @@ void deleteBook() {
                 quantities[j] = quantities[j + 1];
             }
             bookCount--;
-            printf("Book deleted successfully.\n");
+            printf("Livre supprimé avec succès.\n");
             return;
         }
     }
-    printf("No book found with title \"%s\".\n", searchTitle);
+    printf("Aucun livre trouvé avec le titre %s.\n", searchTitle);
+
 }
 
 void totalBooks() {
@@ -190,5 +191,6 @@ void totalBooks() {
     for (int i = 0; i < bookCount; i++) {
         total += quantities[i];
     }
-    printf("Total number of books in stock: %d\n", total);
+    printf("Nombre total de livres en stock : %d\n", total);
+
 }
