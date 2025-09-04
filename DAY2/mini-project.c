@@ -194,3 +194,19 @@ void totalBooks() {
     printf("Nombre total de livres en stock : %d\n", total);
 
 }
+
+// Build My Own Functions
+
+// strcspn
+void remove_newline_character_Custom(char *str1){
+    int i=0;
+    while (str1[i] != '\0')
+    {
+        if(str1[i] == '\n'){
+            str1[i] = '\0';
+            break;
+        }
+        i++;
+    }
+    
+}
