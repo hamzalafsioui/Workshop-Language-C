@@ -24,13 +24,14 @@ int main(){
     if(str[i] == substr[0]){
       found = 1; // right now found first char
       int j = 0;
-      for (j = 0; j < sublen; i++)
+      for (j = 0; j < sublen; j++)
       {
-         if(str[i+j] != substr[j]){
+        if(str[i+j] != substr[j]){
           found = 0; // not found 
           break;
         }
       }
+      // j increments to sublen if completed
 
       if(sublen == j){
         found = 1; // final checking 
