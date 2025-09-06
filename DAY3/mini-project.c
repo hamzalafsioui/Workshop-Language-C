@@ -79,6 +79,28 @@ void updateContact(){
       
 
 void deleteContact(){
+    printf("\n======= Supprimer un Contact =======\n");
+     printf("Nom du Contact a Supprimer: ");
+    char searchName[MAX_NAME_LENGTH];
+    while (getchar() != '\n');
+   
+    fgets(searchName, sizeof(searchName), stdin);
+    searchName[strcspn(searchName, "\n")] = '\0';
+
+    for (int i = 0; i < contactCount; i++)
+    {
+        if (strcmp(contacts[i].Name, searchName) == 0)
+        {
+            for (int j = i; j < contactCount - 1; j++)
+            {
+                contacts[j] = contacts[j + 1];
+            }
+            contactCount--;
+            printf("Contact supprime avec succes.\n");
+            return;
+        }
+    }
+    printf("Contact non trouve.\n");
 
 }
 
