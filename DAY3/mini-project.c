@@ -21,11 +21,13 @@ void addContact(){
   newContact.Name[strcspn(newContact.Name, "\n")] = '\0';
   do{
   printf("Telephone (10 chiffres): ");
-  scanf(" %10s", newContact.Telephone_Number);
+
+  fgets(newContact.Telephone_Number, sizeof(newContact.Telephone_Number), stdin);
+  newContact.Telephone_Number[strcspn(newContact.Telephone_Number, "\n")] = '\0';
   
   }while (strlen(newContact.Telephone_Number) != 10);
   
-      while (getchar() != '\n');
+  while (getchar() != '\n');
 
   
 
@@ -39,8 +41,42 @@ void addContact(){
 }
 
 void updateContact(){
+    printf("\n======= Modifier un Contact. =======\n");
+    printf("Nom du Contact a modifier: ");
+    char searchName[MAX_NAME_LENGTH];
+    while (getchar() != '\n');
+   
+    fgets(searchName, sizeof(searchName), stdin);
+    searchName[strcspn(searchName, "\n")] = '\0';
 
+    for (int i = 0; i < contactCount; i++)
+    {
+        if (strcmp(contacts[i].Name, searchName) == 0)
+        {
+            
+            do{
+            printf("Telephone: ");
+            fgets(contacts[i].Telephone_Number, sizeof(contacts[i].Telephone_Number), stdin);
+            contacts[i].Telephone_Number[strcspn(contacts[i].Telephone_Number, "\n")] = '\0';
+
+            }while (strlen(contacts[i].Telephone_Number) != 10);
+            
+            while (getchar() != '\n');
+
+            
+            
+            printf("Adresse: ");
+            fgets(contacts[i].Address, sizeof(contacts[i].Address), stdin);
+            contacts[i].Address[strcspn(contacts[i].Address, "\n")] = '\0';
+
+            printf("Contact modifie avec succes.\n");
+            return;
+        }
+    }
+    printf("Contact non trouve.\n");
 }
+
+      
 
 void deleteContact(){
 
