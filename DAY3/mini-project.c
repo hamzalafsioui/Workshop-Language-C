@@ -124,6 +124,25 @@ void displayContacts(){
 }
 
 void searchContact(){
+    printf("\n======= Rechercher un Contact =======\n");
+    printf("Nom du Contact a rechercher: ");
+    char searchName[MAX_NAME_LENGTH];
+    while (getchar() != '\n');
+   
+    fgets(searchName, sizeof(searchName), stdin);
+    searchName[strcspn(searchName, "\n")] = '\0';
+
+    for (int i = 0; i < contactCount; i++)
+    {
+        if (strcmp(contacts[i].Name, searchName) == 0)
+        {
+            printf("Nom: %s\n", contacts[i].Name);
+            printf("Phone: %s\n", contacts[i].Telephone_Number);
+            printf("Address: %s\n", contacts[i].Address);
+            return;
+        }
+    }
+    printf("Contact non trouve.\n");
 
 }
 
