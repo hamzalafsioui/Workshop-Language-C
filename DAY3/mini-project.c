@@ -17,18 +17,20 @@ void addContact(){
   printf("Ajouter un Contact.\n");
   printf("Nom: ");
   getchar();
-  fgets(newContact.Name, MAX_NAME_LENGTH, stdin);
+  fgets(newContact.Name, sizeof(newContact.Name), stdin);
   newContact.Name[strcspn(newContact.Name, "\n")] = '\0';
   do{
-printf("Telephone (10 chiffres): ");
-  scanf("%10s", newContact.Telephone_Number);
+  printf("Telephone (10 chiffres): ");
+  scanf(" %10s", newContact.Telephone_Number);
   
   }while (strlen(newContact.Telephone_Number) != 10);
   
-  getchar();
+      while (getchar() != '\n');
+
+  
 
   printf("Adresse: ");
-  fgets(newContact.Address, MAX_ADDRESS_LENGTH, stdin);
+  fgets(newContact.Address, sizeof(newContact.Address), stdin);
   newContact.Address[strcspn(newContact.Address, "\n")] = '\0';
 
   contacts[contactCount] = newContact;
@@ -44,8 +46,23 @@ void deleteContact(){
 
 }
 
-void displayContact(){
+void displayContacts(){
+    printf("\n======= Tous les Contacts =======\n");
+  
+  if(contactCount == 0){
+    printf("aucun contacts \n");
+    return;
+  }
 
+  for (int i = 0; i < contactCount; i++)
+  {
+      printf("[%d] Nom: %s | Phone: %s | Address: %s\n",
+               i + 1,
+               contacts[i].Name,
+               contacts[i].Telephone_Number,
+               contacts[i].Address);
+  }
+  
 }
 
 void searchContact(){
@@ -83,7 +100,7 @@ int main()
 
       break;
     case 4:
-      displayContact();
+      displayContacts();
 
       break;
     case 5:
