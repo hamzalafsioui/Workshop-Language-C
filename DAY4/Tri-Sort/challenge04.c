@@ -14,7 +14,7 @@ int pivotPosition(int arr[] ,int low,int high){
     int i = low;
     int j = high;
     
-    while (4)
+    while (1)
     {
        
     
@@ -38,6 +38,15 @@ int pivotPosition(int arr[] ,int low,int high){
     
 }
 
+void TriRapide(int arr[],int low,int high){
+
+    if(low<high){
+    int pivot = pivotPosition(arr,low,high);
+        TriRapide(arr,low,pivot);
+        TriRapide(arr,pivot +1,high);
+    }
+}
+
 void afficherTableau(int arr[],int n){
     for (int i = 0; i < n; i++) {
         printf("%d ", arr[i]);
@@ -53,8 +62,12 @@ int main(){
     afficherTableau(tableau, n);
 
     
-     printf("pivot possition: %d ",pivotPosition(tableau,0,8));
+    printf("pivot possition: %d ",pivotPosition(tableau,0,n-1));
 
+    printf("Tableau apres le pivotPosition :\n");
+    afficherTableau(tableau, n);
+
+    TriRapide(tableau,0,n-1);
     printf("Tableau apres le tri rapide :\n");
     afficherTableau(tableau, n);
     return 0;
